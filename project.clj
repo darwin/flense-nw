@@ -12,7 +12,7 @@
   :plugins
   [[lein-cljsbuild "1.0.4"]]
 
-  :source-paths ["src"]
+  :source-paths ["src", "checkouts/flense/src"]
 
   :cljsbuild
   {:builds

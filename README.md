@@ -19,6 +19,40 @@ This will build flense-nw from source and launch it as a standalone GUI app.
 
 ### Development tips
 
+#### Development cycle with flense subproject
+
+If you want to develop on both flense and flense-nw concruently without constantly launching `lein install` in flense. I recommend including flense as a subproject in flense-nw. Leiningen has a feature called [checkout dependencies](https://github.com/technomancy/leiningen/blob/master/doc/TUTORIAL.md#checkout-dependencies) for that. 
+
+##### Initial setup:
+
+    cd path/to/flense-nw
+    mkdir checkouts
+    cd checkouts
+    ln -s path/to/flense flense
+    
+
+My tree looks like this (flense repo is checked out in `$CODE/flense-dev/flense`):
+
+    $CODE/flense-dev/flense-nw ➔ tree .
+    .
+    ├── LICENSE
+    ├── README.md
+    ├── checkouts
+    │   └── flense -> ../../flense
+    ├── index.html
+    ├── package.json
+    ├── project.clj
+    ├── resources
+    ...
+
+Unfortunately this is not yet fully supported for cljs tooling.
+
+Sam Aaron suggests using [a hybrid solution](https://groups.google.com/forum/#!msg/clojurescript/KRL-rJudhbg/7Fd39KgN2T8J) to modify `:source-paths` to get it working.
+
+With `:source-paths` modification, running `lein cljsbuild auto` will pick up all file changes in both flense-nw and flense. Also flense folder will be on classpath and will take precence before locally installed flence library thanks to checkout dependencies system.
+
+(happy face)
+
 #### Using React Development Tools
 
 Flense uses Facebook's [React.js](https://github.com/facebook/react) library (via David Nolen's [Om](https://github.com/swannodette/om)). React team offers useful [React Developer Tools](https://github.com/facebook/react-devtools) (RDT), which is a Chrome extension for inspecting and debugging React components (it integrates into Chrome's dev tools). Flense-nw is running in node-webkit (aka [nw.js]((https://github.com/nwjs/nw.js))). The problem is that RDT cannot be easily installed into nw.js itself.
