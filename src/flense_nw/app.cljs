@@ -9,6 +9,7 @@
             [flense-nw.error :refer [error-bar-view]]
             [flense-nw.keymap :refer [keymap]]
             [fs.core :as fs]
+            [flense-nw.oculus :as oculus]
             [om.core :as om]
             [om-tools.core :refer-macros [defcomponent]]
             [om-tools.dom :as dom]
@@ -114,8 +115,9 @@
         (dom/div {:class "tab-content"}
           (for [i (range (count tabs))
                 :let [{:keys [document]} (nth tabs i)]]
-            (dom/div {:style {:display (if (= i selected-tab) "block" "none")}}
-              (om/build flense/editor document {:opts opts}))))))))
+            (dom/div {:class "editors" :style {:display (if (= i selected-tab) "block" "none")}}
+              (om/build flense/editor document {:opts opts})
+              (om/build oculus/editor document {:opts opts}))))))))
 
 (defn init []
   (let [command-chan (async/chan)]

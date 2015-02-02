@@ -1,0 +1,92 @@
+.editors {
+}
+
+.editors > div {
+  float: left;
+  width: 50%;
+  height: 100%;
+}
+
+.oculus {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 14px;
+  line-height: 18px;
+  background-color: #fef;
+}
+
+.perspective {
+    background-color: hsla(0,0%,0%,.04);
+    background-image: -webkit-linear-gradient(hsla(0,0%,0%,.01) 2.5%, transparent 2.5%, transparent 97.5%, hsla(0,0%,0%,.1) 97.5%),
+                      -webkit-linear-gradient(left, hsla(0,0%,0%,.01) 2.5%, transparent 2.5%, transparent 97.5%, hsla(0,0%,0%,.1) 97.5%);
+    background-size: 22px 22px;
+    box-shadow: 0 0 0 .1em hsla(0,0%,0%,.2);
+    left: 50%;
+    margin: 0px;
+    padding: 44px;
+    position: absolute;
+    top: 50%;
+    zoom: 1;
+    -webkit-transform: rotateX(45deg) rotateY(0deg) rotateZ(20deg);
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: .25s;
+}
+
+.cube,
+.cube-after,
+.cube-before {
+    box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.05);
+    float: left;
+    position: absolute;
+}
+
+.cube {
+  display: inline;
+    background-color: #f66;
+    position: relative;
+    -webkit-transform-style: preserve-3d;
+}
+
+.cube-content {
+   -xwebkit-transform: translateZ(1px);
+}
+
+.cube-after {
+  width: 100%;
+  background-color: #e55;
+  -webkit-transform: translateY(0%) rotateX(-90deg);
+  -webkit-transform-origin: 0 0;
+}
+
+.cube-before {
+  height: 100%;
+  background-color: #d44;
+  -webkit-transform: rotateY(90deg);
+  -webkit-transform-origin: 0 0;
+}
+
+.oculus .selected.atom,
+.oculus .selected.delimiter:not(.editing),
+.oculus .editing .char.in-range {
+  background: rgb(170,203,249);
+}
+
+.oculus .toplevel {
+}
+
+.oculus .atom,
+.oculus .stringlike,
+.oculus .delimiter {
+  border: none;
+  display: inline-block;
+  outline: none;
+  padding: 2px 6px;
+}
+
+.oculus .stringlike {
+  white-space: pre-wrap;
+}
+
+.oculus .spacer {
+
+  xdisplay: none;
+}

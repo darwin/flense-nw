@@ -20,7 +20,7 @@
 
   :cljsbuild
   {:builds
-   [{:source-paths ["src"]
+   [{:source-paths ["src", "checkouts/flense/src", "checkouts/cljs-devtools/src"]
      :compiler {:main flense-nw.app
                 :output-to "target/flense.js"
                 :output-dir "target"
