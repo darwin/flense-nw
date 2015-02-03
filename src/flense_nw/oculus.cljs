@@ -20,15 +20,17 @@
   (count (:path token)))
 
 (defn cube [depth content]
-  (let [height (* (- max-depth depth) step-height)
+  (let [bottom-thickness (* depth 2)
+        height (- (* (- max-depth depth) step-height) bottom-thickness)
         push (* depth step-height)
         floor (* max-depth step-height)]
-    (dom/div {:class "cube"
+    (dom/div {:class (str "cube " (aget content "_store" "props" "className")) ; ugly
               :style {:-webkit-transform (str "translateZ(-" (px push) ") translateZ(" (px floor) ")")}}
       (dom/div {:class "cube-content"} content (dom/span {:class "cube-before"
                                                           :style {:width (px height)}} ""))
       (dom/div {:class "cube-after"
-                :style {:height (px height)}}
+                :style {:height (px height)
+                        :border-bottom-width (px bottom-thickness)}}
         ))))
 
 (defcomponent atom* [form owner opts]
@@ -44,7 +46,7 @@
     (cube (depth form) (dom/div {:class (cond-> (str "stringlike " (name (:type form)))
                                           (:editing? form) (str " editing")
                                           (:selected? form) (str " selected"))
-                                 } (:text form)))))
+                                 } (dom/div {:class "stringlike-inner"} (:text form))))))
 
 (defcomponent delimiter [token owner opts]
   (render [_]
@@ -68,8 +70,7 @@
 
 (defcomponent editor [document owner opts]
   (did-mount [_]
-    (.log js/console "traq")
-    (aset js/window "traq" (js/Traqball. #js {:stage "traqball" :angles #js [30 10] :perspective 1200})))
+    (js/Traqball. #js {:stage "traqball" :angles #js [30 10] :perspective 1200}))
   (render [_]
     (let [{:keys [tree]} (z/assoc document :selected? true)]
       (dom/div {:class "oculus" }

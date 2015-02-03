@@ -52,6 +52,7 @@
   background-color: #ddd;
   -webkit-transform: translateY(0%) rotateX(-90deg);
   -webkit-transform-origin: 0 0;
+  border-bottom: 0px solid #aaa;
 }
 
 .cube-before {
@@ -61,28 +62,40 @@
   -webkit-transform-origin: 0 0;
 }
 
-.oculus .selected {
+.cube-content .selected {
   background: yellow !important;
 }
 
-.oculus .toplevel {
-}
-
-.oculus .atom,
-.oculus .stringlike,
-.oculus .delimiter {
+.cube-content .atom,
+.cube-content .stringlike,
+.cube-content .delimiter {
   border: none;
   display: inline-block;
   outline: none;
+  padding: 2px 2px;
+}
+
+.cube-content .atom,
+.cube-content .delimiter {
   padding: 2px 6px;
 }
 
-.oculus .delimiter {
+.cube.delimiter .cube-after {
+  background-color: #aaa;
+}
+ 
+.cube-content .delimiter {
   padding: 2px 0px;
-  background-color: #fff;
+  background-color: #ccc;
 }
 
-.oculus .stringlike {
+.cube-content .stringlike {
+}
+
+.stringlike-inner {
   white-space: pre-wrap;
-  border-bottom: 2px solid red;
+  background-color: #a00;
+  color: white;
+  border-radius: 2px;
+  padding: 0px 2px;
 }
