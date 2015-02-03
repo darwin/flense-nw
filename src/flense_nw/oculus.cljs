@@ -67,9 +67,13 @@
                 (om/build atom* token {:opts opts})))))))))
 
 (defcomponent editor [document owner opts]
+  (did-mount [_]
+    (.log js/console "traq")
+    (aset js/window "traq" (js/Traqball. #js {:stage "traqball" :angles #js [30 10] :perspective 1200})))
   (render [_]
     (let [{:keys [tree]} (z/assoc document :selected? true)]
-      (dom/div {:class "oculus"}
-        (dom/div {:class "perspective"}
-          (om/build-all top-level-form (:children tree)
-            {:opts (-> opts (update :line-length (fnil identity 72)))}))))))
+      (dom/div {:class "oculus" }
+        (dom/div {:id "traqball"}
+          (dom/div {:class "grid"}
+            (om/build-all top-level-form (:children tree)
+              {:opts (-> opts (update :line-length (fnil identity 72)))})))))))

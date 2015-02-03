@@ -11,24 +11,22 @@
   font-family: 'Source Code Pro', monospace;
   font-size: 14px;
   line-height: 18px;
-  background-color: #fef;
 }
 
-.perspective {
-    background-color: hsla(0,0%,0%,.04);
+.grid {
+  cursor: move;
+  display: inline-block;
+  xposition: absolute;
+  	-webkit-transform-style: preserve-3d;
+  	-webkit-transform-origin: 50% 50%;
+
+    background-color: #fafafa;
     background-image: -webkit-linear-gradient(hsla(0,0%,0%,.01) 2.5%, transparent 2.5%, transparent 97.5%, hsla(0,0%,0%,.1) 97.5%),
                       -webkit-linear-gradient(left, hsla(0,0%,0%,.01) 2.5%, transparent 2.5%, transparent 97.5%, hsla(0,0%,0%,.1) 97.5%);
     background-size: 22px 22px;
     box-shadow: 0 0 0 .1em hsla(0,0%,0%,.2);
-    left: 50%;
     margin: 0px;
     padding: 44px;
-    position: absolute;
-    top: 50%;
-    zoom: 1;
-    -webkit-transform: rotateX(45deg) rotateY(0deg) rotateZ(20deg);
-    -webkit-transform-style: preserve-3d;
-    -webkit-transition: .25s;
 }
 
 .cube,
@@ -41,13 +39,12 @@
 
 .cube {
   display: inline;
-    background-color: #eee;
-    position: relative;
-    -webkit-transform-style: preserve-3d;
+  background-color: #eee;
+  position: relative;
+  -webkit-transform-style: preserve-3d;
 }
 
 .cube-content {
-   -xwebkit-transform: translateZ(1px);
 }
 
 .cube-after {
@@ -64,10 +61,8 @@
   -webkit-transform-origin: 0 0;
 }
 
-.oculus .selected.atom,
-.oculus .selected.delimiter:not(.editing),
-.oculus .editing .char.in-range {
-  background: rgb(170,203,249);
+.oculus .selected {
+  background: yellow !important;
 }
 
 .oculus .toplevel {
