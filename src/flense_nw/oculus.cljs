@@ -2,7 +2,7 @@
   (:require [clojure.string :as str]
             [flense.actions.completions :as completions]
             [flense.actions.history :as hist]
-            [flense.layout :as layout]
+            [flense-nw.oculus-layout :as layout]
             [flense.model :as model]
             [om.core :as om]
             [om-tools.core :refer-macros [defcomponent]]
@@ -44,13 +44,12 @@
     (cube (depth form) (dom/div {:class (cond-> (str "stringlike " (name (:type form)))
                                           (:editing? form) (str " editing")
                                           (:selected? form) (str " selected"))
-                                 :style {:max-width (str (/ (:max-width form) 2) "rem")}} (:text form)))))
+                                 } (:text form)))))
 
 (defcomponent delimiter [token owner opts]
   (render [_]
-    (if (not (:seq (:classes token)))
-      (cube (depth token) (dom/span {:class (str/join " " (map name (:classes token)))}
-                            (:text token))))))
+    (cube (depth token) (dom/span {:class (str/join " " (map name (:classes token)))}
+                          (:text token)))))
 
 (defcomponent top-level-form [form owner opts]
   (render [_]

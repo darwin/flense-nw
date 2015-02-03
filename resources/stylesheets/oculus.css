@@ -41,7 +41,7 @@
 
 .cube {
   display: inline;
-    background-color: #f66;
+    background-color: #eee;
     position: relative;
     -webkit-transform-style: preserve-3d;
 }
@@ -52,14 +52,14 @@
 
 .cube-after {
   width: 100%;
-  background-color: #e55;
+  background-color: #ddd;
   -webkit-transform: translateY(0%) rotateX(-90deg);
   -webkit-transform-origin: 0 0;
 }
 
 .cube-before {
   height: 100%;
-  background-color: #d44;
+  background-color: #ccc;
   -webkit-transform: rotateY(90deg);
   -webkit-transform-origin: 0 0;
 }
@@ -82,11 +82,12 @@
   padding: 2px 6px;
 }
 
-.oculus .stringlike {
-  white-space: pre-wrap;
+.oculus .delimiter {
+  padding: 2px 0px;
+  background-color: #fff;
 }
 
-.oculus .spacer {
-
-  xdisplay: none;
+.oculus .stringlike {
+  white-space: pre-wrap;
+  border-bottom: 2px solid red;
 }
